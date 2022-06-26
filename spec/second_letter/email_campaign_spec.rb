@@ -35,6 +35,7 @@ class EmailCampaign
 end
 
 RSpec.describe EmailCampaign do
+  #described_class.new(subject: subject, body: body) ????
   describe '#call' do
     let(:mailer) {described_class.new(subject: subject, body: body)}
     let(:subject) {'test'}
@@ -44,13 +45,11 @@ RSpec.describe EmailCampaign do
     let(:subject_field) {"Subject: #{subject}"}
     let(:plained_text) {[subject_field, signature].join("\n")}
 
-      it 'schedules date' do
+      it '#schedule_on' do
         expect{ mailer.schedule_on(date) }.to change{ mailer.scheduled_on } .to(date)
       end
 
-      it 'makes letter to plain text' do
-        #stub_const('DEFAULT_PLAIN_TEXT_SIGNATURE', "\n\n--\n Awesome Mail.app, http://awesomemail.app/".freeze)
-
+      it '#to_plain_text' do
         expect(mailer.to_plain_text).to match( plained_text)
       end
   end

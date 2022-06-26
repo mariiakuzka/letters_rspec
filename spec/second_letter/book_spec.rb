@@ -38,28 +38,25 @@ end
 RSpec.describe Book do
   describe "#call" do
     let(:book) { described_class.new(path: path) }
+
     context 'when book format is epub' do
-      #let(:book) { described_class.new(path: path) }
       let(:path) { '/system/a/ants.epub' }
 
-      it 'checks epub format' do
+      it '#epub?' do
         expect(book.epub?).to eq(true)
       end
+    end
 
-      it 'returns download link' do
-        expect(book.download_url).to match('/system/a/ants')
-      end
+    let(:path) { '/system/a/ants.epub' }
+    it '#download_url' do
+      expect(book.download_url).to eq('/system/a/ants.epub')
     end
 
     context 'when book format is pdf' do
       let(:path) { '/system/a/anatomy.pdf' }
 
-      it 'checks epub format' do
+      it '#epub?' do
         expect(book.epub?).to eq(false)
-      end
-
-      it 'returns download link' do
-        expect(book.download_url).to match('/system/a/anatomy')
       end
     end
   end

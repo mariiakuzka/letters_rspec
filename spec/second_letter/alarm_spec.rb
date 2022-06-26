@@ -1,5 +1,5 @@
 require "spec_helper"
-require 'time'
+
 
 # Alarm — будильник, установленный на определенное время (`at`).
 #
@@ -25,16 +25,16 @@ RSpec.describe Alarm do
   describe '#call' do
 
   let(:alarm) {described_class.new(at: at)}
-  let(:at) {Time.now}
-  let(:minutes) {20}
+  let(:at) {}
+  #let(:minutes) {20}
 
-    it 'returns human format time' do
-      expect(alarm.to_human).to eq( at.strftime("%k:%M").strip)
+    it '#to_human' do
+      expect(alarm.to_human).to eq("10:51")
     end
 
-    it 'delays alarm' do
+    it '#snooze_for' do
 
-      expect{ alarm.snooze_for(minutes) }.to change{ alarm.at}.to eq(at + minutes * 60)
+      expect{ alarm.snooze_for(20) }.to change{ alarm.at}.to eq(at + 20 * 60)
     end
   end
 end
