@@ -61,6 +61,7 @@ end
 
 RSpec.describe Question do
   describe '#call' do
+  
     let(:text) { 'test' }
     let(:author) { 'author' }
     let(:summary) { 'test summary' }

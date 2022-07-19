@@ -80,6 +80,7 @@ RSpec.describe DailySummaryController do
     end
 
     context 'when user & email_notifications_enabled true' do
+      
       let(:user) { User.new(email: email, email_notifications_enabled: true) }
       let(:daily_summary_email) { DailySummaryEmail.new(recipient: user) }
       let(:recipient) { :user }
@@ -97,6 +98,7 @@ RSpec.describe DailySummaryController do
     end
 
     context 'when email_notifications_enabled false' do
+
       let(:user) { User.new(email: email, email_notifications_enabled: false) }
       let(:daily_summary_email) { DailySummaryEmail.new(recipient: user) }
       let(:recipient) { :user }
