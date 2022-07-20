@@ -7,3 +7,5 @@ gem 'rspec'
 
 gem 'rubocop'
 gem 'require_all'
+
+gem 'byebug'
